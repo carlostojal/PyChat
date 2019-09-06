@@ -35,6 +35,8 @@ def configure_distributor_receiving():
 def receive(configured_distributor):
     while True:
         message = s.recv(1024).decode()
+        if not message:
+            break
         if message:
             print(message)
         if configured_distributor:

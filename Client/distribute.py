@@ -1,4 +1,5 @@
-from Client.distributing import *
+from distributing import *
+from sending import configure_distribute
 
 #
 # Copyright (c) Carlos Tojal (carlostojal)
@@ -8,5 +9,6 @@ from Client.distributing import *
 #
 
 s = configure_distributor()
+configure_distribute()
 configure_client(s)
-upload(s)
+upload()

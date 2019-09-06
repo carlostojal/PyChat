@@ -9,6 +9,7 @@ from sending import send
 #
 
 receiver = ("127.0.0.1", 255)
+sender = ("127.0.0.1", 255)
 
 
 def configure_distributor():
@@ -27,20 +28,24 @@ def configure_client(s):
     print("Waiting for connection...")
     s.listen()
 
+    global sender
     sender, sender_addr = s.accept()
     print("Got sender connection from ", sender_addr)
+    global receiver
     receiver, receiver_addr = s.accept()
     print("Got receiver connection from ", receiver_addr)
     print("\n")
 
 
-# send message to previous client
-def upload(s):
-    message = s.recv(1024)
-    send(message)
+# gets message and sends to previous client
+def upload():
+    while True:
+        message = sender.recv(1024).decode()
+        send(message)
+        print("Uploaded message")
 
 
 # distributes message to next client
 def distribute(message):
     receiver.send(message.encode())
-    print("(Distributed  message to ", receiver, ")")
+    print("Distributed  message to ", receiver)

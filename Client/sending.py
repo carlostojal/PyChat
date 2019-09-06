@@ -13,11 +13,13 @@ s = socket.socket()
 # sending window functions
 def configure():
     print("\n** PyChat Client **")
-    print("** Sender Configuration **")
+    print("** Sender Configuration **\n")
     print("Your IP Address: ", socket.gethostbyname(socket.gethostname()))
 
     server_address = input("\nServer IP Address: ")
     server_port = input("Server Port: ")
+
+    global s
 
     s.connect((server_address, int(server_port)))
 
@@ -33,6 +35,13 @@ def chat():
             send(message)
         else:
             print("Message can't be empty.")
+
+
+def configure_distribute():
+    global s
+    host = input("Server IP Address: ")
+    port = input("Server Port: ")
+    s.connect((host, int(port)))
 
 
 def send(message):
