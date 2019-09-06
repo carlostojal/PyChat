@@ -28,7 +28,5 @@ print("Got receiver connection from ", receiver_addr)
 
 while True:
     data = sender.recv(1024).decode()
-    if not data:
-        break
     print(data)
     receiver.send(data.encode())

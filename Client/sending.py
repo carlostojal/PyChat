@@ -2,7 +2,7 @@ import socket
 
 #
 # Copyright (c) Carlos Tojal (carlostojal)
-# client_send.py
+# sending.py
 # PyChat
 # github.com/carlostojal/PyChat
 #
@@ -10,6 +10,7 @@ import socket
 s = socket.socket()
 
 
+# sending window functions
 def configure():
     print("\n** PyChat Client **")
     print("** Sender Configuration **")
@@ -28,7 +29,7 @@ def chat():
     while message_content != "exit":
         message_content = input("Your message: ")
         if message_content != "":
-            message = username+": "+input("Your message: ")
+            message = username + ": " + message_content
             send(message)
         else:
             print("Message can't be empty.")
@@ -36,5 +37,3 @@ def chat():
 
 def send(message):
     s.send(message.encode())
-
-

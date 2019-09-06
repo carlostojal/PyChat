@@ -1,11 +1,13 @@
-from client_send import *
+from sending import *
 
 #
 # Copyright (c) Carlos Tojal (carlostojal)
-# send_client.py
+# send.py
 # PyChat
 # github.com/carlostojal/PyChat
 #
+
+# message sending window
 
 configure()
 chat()
